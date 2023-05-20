@@ -3,7 +3,7 @@ import "./App.css";
 
 function App() {
   const [item, setItem] = useState("");
-  const [newItems, setNewItems] = useState(null);
+  const [newItems, setNewItems] = useState([]);
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
@@ -35,14 +35,14 @@ function App() {
       value:item
     };
 
-    fetch('http://localhost:9000/newItems', {
-      method: 'POST',
-      headers: {"Content-type":"application/json"},
-      body: JSON.stringify(newItems)
-    }).then(() => {
+    // fetch('http://localhost:9000/newItems', {
+    //   method: 'POST',
+    //   headers: {"Content-type":"application/json"},
+    //   body: JSON.stringify(newItems)
+    // }).then(() => {
       setNewItems((oldList) => [...oldList, newItem]);
       setItem("");
-    })
+    // })
 
   }
 
@@ -72,7 +72,7 @@ function App() {
           Add
         </button>
         <ul className="list">
-          {loading && <div>Loading...</div>}
+          {/* {loading && <div>Loading...</div>} */}
           {newItems && newItems.map(item => {
             return <li>{item.value} <button className="btn-delete" onClick={() => {deleteTodo(item.value)}}>Delete</button></li>;
           })}
