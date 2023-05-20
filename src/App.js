@@ -1,28 +1,53 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 
 function App() {
   const [item, setItem] = useState("");
-  const [newItems, setNewItems] = useState([]);
+  const [newItems, setNewItems] = useState(null);
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    setTimeout(() => {
+      fetch("http://localhost:9000/newItems")
+      .then(res => {
+        return res.json();
+      })
+      .then((data) => {
+        setNewItems(data)
+        setLoading(false)
+      })
+      .catch(err => {
+        console.log(err.message);
+      })
+    }, 1000)
+  },[]);
+
 
   const addTodo = (e) => {
+    e.preventDefault()
     if(!item){
       alert('Please, enter your todo!!')
+      e.preventDefault()
       return;
     }
-    e.preventDefault()
 
     const newItem = {
-      value: item
+      value:item
     };
 
-    setNewItems((oldList) => [...oldList, newItem]);
-    setItem("");
+    fetch('http://localhost:9000/newItems', {
+      method: 'POST',
+      headers: {"Content-type":"application/json"},
+      body: JSON.stringify(newItems)
+    }).then(() => {
+      setNewItems((oldList) => [...oldList, newItem]);
+      setItem("");
+    })
+
   }
 
   function deleteTodo (value){
     const newArray = newItems.filter(item => item.value !== value)
-
     setNewItems(newArray)
   }
 
@@ -43,12 +68,13 @@ function App() {
           value={item}
           onChange={e => setItem(e.target.value)}
         />
-        <button onClick={addTodo}>
+        <button className="btn" onClick={addTodo}>
           Add
         </button>
         <ul className="list">
-          {newItems.map(item => {
-            return <li>{item.value} <button onClick={() => {deleteTodo(item.value)}}>Delete</button></li>;
+          {loading && <div>Loading...</div>}
+          {newItems && newItems.map(item => {
+            return <li>{item.value} <button className="btn-delete" onClick={() => {deleteTodo(item.value)}}>Delete</button></li>;
           })}
         </ul>
       </div>

@@ -1,10 +1,70 @@
-.form {
+/* Whole page */
+@import url('https://fonts.googleapis.com/css2?family=Braah+One&display=swap');
+
+.App {
+  padding: 12px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
+  font-family: 'Braah One', sans-serif;
 }
 
+
+/* Form */
 .form {
-  
+  border: 2px solid gray;
+  padding: 16px;
+  width:500px;
+  height: 650px;
+  box-shadow:10px 10px lightblue;
+}
+
+li {
+  list-style-type: none;
+  margin: 6px;
+}
+
+/* Add button */
+.btn {
+  background-color: lightblue;
+  border-radius: 8px;
+  border-style: none;
+  box-sizing: border-box;
+  cursor: pointer;
+  padding: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  vertical-align: middle;
+}
+
+.btn:hover {
+  background-color: rgb(151, 217, 239);
+}
+
+
+/* Delete button */
+.btn-delete {
+  background-color: lightblue;
+  border-radius: 8px;
+  border-style: none;
+  box-sizing: border-box;
+  cursor: pointer;
+  padding: 4px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.btn-delete:hover {
+  background-color: rgb(151, 217, 239);
+}
+
+
+/* Input */
+.input {
+  border-radius: 8px;
+  box-sizing: border-box;
+  padding: 6px;
+  margin: 4px;
 }
