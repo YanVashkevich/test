@@ -3,24 +3,24 @@ import "./App.css";
 
 function App() {
   const [item, setItem] = useState("");
-  const [newItems, setNewItems] = useState([]);
-  // const [loading, setLoading] = useState(true)
+  const [newItems, setNewItems] = useState(null);
+  const [loading, setLoading] = useState(true)
 
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     fetch("http://localhost:8000/newItems")
-  //     .then(res => {
-  //       return res.json();
-  //     })
-  //     .then((data) => {
-  //       setNewItems(data)
-  //       setLoading(false)
-  //     })
-  //     .catch(err => {
-  //       console.log(err.message);
-  //     })
-  //   }, 2000)
-  // },[]);
+  useEffect(() => {
+    setTimeout(() => {
+      fetch("http://localhost:8000/newItems")
+      .then(res => {
+        return res.json();
+      })
+      .then((data) => {
+        setNewItems(data)
+        setLoading(false)
+      })
+      .catch(err => {
+        console.log(err.message);
+      })
+    }, 1000)
+  },[]);
 
 
   const addTodo = (e) => {
@@ -35,18 +35,14 @@ function App() {
       value:item
     };
 
-    setNewItems((oldlist) => [...oldlist, newItem])
-    setItem("");
-
-
-    // fetch('http://localhost:8000/newItems', {
-    //   method: 'POST',
-    //   headers: {"Content-type":"application/json"},
-    //   body: JSON.stringify(newItems)
-    // }).then(() => {
-    //   setNewItems((oldList) => [...oldList, newItem]);
-    //   setItem("");
-    // })
+    fetch('http://localhost:9000/newItems', {
+      method: 'POST',
+      headers: {"Content-type":"application/json"},
+      body: JSON.stringify(newItems)
+    }).then(() => {
+      setNewItems((oldList) => [...oldList, newItem]);
+      setItem("");
+    })
 
   }
 
@@ -76,7 +72,7 @@ function App() {
           Add
         </button>
         <ul className="list">
-          {/* {loading && <div>Loading...</div>} */}
+          {loading && <div>Loading...</div>}
           {newItems && newItems.map(item => {
             return <li>{item.value} <button className="btn-delete" onClick={() => {deleteTodo(item.value)}}>Delete</button></li>;
           })}
