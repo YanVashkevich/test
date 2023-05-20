@@ -4,7 +4,7 @@ import "./App.css";
 function App() {
   const [item, setItem] = useState("");
   const [newItems, setNewItems] = useState([]);
-  const [loading, setLoading] = useState(true)
+  // const [loading, setLoading] = useState(true)
 
   // useEffect(() => {
   //   setTimeout(() => {
