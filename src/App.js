@@ -8,7 +8,7 @@ function App() {
 
   useEffect(() => {
     setTimeout(() => {
-      fetch("http://localhost:8000/newItems")
+      fetch("http://localhost:9000/newItems")
       .then(res => {
         return res.json();
       })
@@ -55,7 +55,7 @@ function App() {
     <div className="App">
       <form className="form">
         <h1 className="title">
-          ToDo List
+          ToDo's List
         </h1>
 
 
