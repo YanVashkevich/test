@@ -15,15 +15,18 @@
 /* Form */
 .form {
   border: 2px solid gray;
-  padding: 16px;
-  width:500px;
-  height: 650px;
+  border-radius: 10px;
+  width:100%;
+  max-width: 540px;
   box-shadow:10px 10px lightblue;
+  margin: 100px auto 20px;
+  padding: 40px 30px 70px;
 }
 
 li {
   list-style-type: none;
   margin: 6px;
+  font-size: 18px;
 }
 
 /* Add button */
@@ -51,7 +54,7 @@ li {
   border-style: none;
   box-sizing: border-box;
   cursor: pointer;
-  padding: 4px;
+  padding: 6px;
   font-size: 14px;
   font-weight: 500;
 }
