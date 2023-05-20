@@ -6,21 +6,21 @@ function App() {
   const [newItems, setNewItems] = useState([]);
   const [loading, setLoading] = useState(true)
 
-  useEffect(() => {
-    setTimeout(() => {
-      fetch("http://localhost:9000/newItems")
-      .then(res => {
-        return res.json();
-      })
-      .then((data) => {
-        setNewItems(data)
-        setLoading(false)
-      })
-      .catch(err => {
-        console.log(err.message);
-      })
-    }, 1000)
-  },[]);
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     fetch("http://localhost:9000/newItems")
+  //     .then(res => {
+  //       return res.json();
+  //     })
+  //     .then((data) => {
+  //       setNewItems(data)
+  //       setLoading(false)
+  //     })
+  //     .catch(err => {
+  //       console.log(err.message);
+  //     })
+  //   }, 1000)
+  // },[]);
 
 
   const addTodo = (e) => {
