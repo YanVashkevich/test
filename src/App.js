@@ -1,59 +1,39 @@
-import { useState} from "react";
+import React,  { useState } from "react";
 import "./App.css";
 
 function App() {
   const [item, setItem] = useState("");
-  const [newItems, setNewItems] = useState([]);
-  // const [loading, setLoading] = useState(true)
+  const [newItems, setNewItems] = useState( [] );
 
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     fetch("http://localhost:9000/newItems")
-  //     .then(res => {
-  //       return res.json();
-  //     })
-  //     .then((data) => {
-  //       setNewItems(data)
-  //       setLoading(false)
-  //     })
-  //     .catch(err => {
-  //       console.log(err.message);
-  //     })
-  //   }, 1000)
-  // },[]);
-
-
-  const addTodo = (e) => {
-    e.preventDefault()
+  const addTodo = () => {
     if(!item){
       alert('Please, enter your todo!!')
-      e.preventDefault()
       return;
     }
 
-    const newItem = {
+    const newitem = {
+      id: Math.floor(Math.random() * 1000),
       value:item
     };
 
-    // fetch('http://localhost:9000/newItems', {
-    //   method: 'POST',
-    //   headers: {"Content-type":"application/json"},
-    //   body: JSON.stringify(newItems)
-    // }).then(() => {
-      setNewItems((oldList) => [...oldList, newItem]);
-      setItem("");
-    // })
-
+    setNewItems(oldList => [ ...oldList, newitem])
+    setItem("")
   }
 
-  function deleteTodo (value){
-    const newArray = newItems.filter(item => item.value !== value)
+  function deleteTodo(id) {
+    const newArray = newItems.filter(item => item.id !== id)
     setNewItems(newArray)
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    console.log('success')
   }
 
   return (
     <div className="App">
-      <form className="form">
+      <form className="form" onSubmit={handleSubmit}>
         <h1 className="title">
           ToDo's List
         </h1>
@@ -61,6 +41,7 @@ function App() {
 
 {/* Все кроме title */}
       <div className="input-btn-output">
+
         <input
           type="text"
           className="input"
@@ -68,13 +49,16 @@ function App() {
           value={item}
           onChange={e => setItem(e.target.value)}
         />
+
         <button className="btn" onClick={addTodo}>
           Add
         </button>
+
         <ul className="list">
-          {/* {loading && <div>Loading...</div>} */}
-          {newItems && newItems.map(item => {
-            return <li>{item.value} <button className="btn-delete" onClick={() => {deleteTodo(item.value)}}>Delete</button></li>;
+          {newItems.map(item => {
+            return (
+              <li>{item.value} <button className="btn-delete" onClick={() => {deleteTodo(item.id)}}>Delete</button></li>
+            );
           })}
         </ul>
       </div>
