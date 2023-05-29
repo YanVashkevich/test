@@ -23,10 +23,17 @@
   padding: 40px 30px 70px;
 }
 
-li {
+.not-completed-item {
   list-style-type: none;
   margin: 6px;
-  font-size: 18px;
+  font-size: 20px;
+}
+
+.completed-item {
+  list-style-type: none;
+  margin: 6px;
+  font-size: 20px;
+  text-decoration: line-through;
 }
 
 /* Add button */
@@ -46,6 +53,22 @@ li {
   background-color: rgb(151, 217, 239);
 }
 
+.add-edit-btn {
+  background-color: rgb(103, 210, 116);
+  border-radius: 8px;
+  border-style: none;
+  box-sizing: border-box;
+  cursor: pointer;
+  padding: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  vertical-align: middle;
+}
+
+.add-edit-btn:hover {
+  background-color: rgb(68, 201, 84);
+}
+
 
 /* Delete button */
 .btn-delete {
@@ -57,6 +80,8 @@ li {
   padding: 6px;
   font-size: 14px;
   font-weight: 500;
+  margin: 4px;
+  vertical-align: middle;
 }
 
 .btn-delete:hover {
@@ -70,4 +95,53 @@ li {
   box-sizing: border-box;
   padding: 6px;
   margin: 4px;
+}
+
+
+/*Edit button */
+.btn-edit {
+  background-color: lightblue;
+  border-radius: 8px;
+  border-style: none;
+  box-sizing: border-box;
+  cursor: pointer;
+  padding: 6px;
+  margin: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  vertical-align: middle;
+}
+
+.btn-edit:hover {
+  background-color: rgb(151, 217, 239);
+}
+
+
+.clear-all {
+  background-color: rgb(192, 18, 18);
+  color: rgb(231, 165, 165);
+  border-radius: 12px;
+  box-sizing: border-box;
+  cursor: pointer;
+  padding: 8px;
+  margin: 4px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+
+.edit-img{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 12px;
+  width: 14px;
+}
+
+.delete-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 12px;
+  width: 14px;
 }
