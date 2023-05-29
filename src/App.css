@@ -23,18 +23,12 @@
   padding: 40px 30px 70px;
 }
 
-.not-completed-item {
+.item {
   list-style-type: none;
   margin: 6px;
   font-size: 20px;
 }
 
-.completed-item {
-  list-style-type: none;
-  margin: 6px;
-  font-size: 20px;
-  text-decoration: line-through;
-}
 
 /* Add button */
 .btn {

@@ -8,20 +8,20 @@ function App() {
   const [newItems, setNewItems] = useState([]);
   const [id, setId] = useState(0);
   const [editItem, setEditItem] = useState(false)
-  const [isDone, setIsDone] = useState(false)
 
 
-  function handleSubmit(e, value){
+
+  function handleSubmit(e){
     e.preventDefault();
-    console.log('succes');
-
+    console.log('success');
+    console.log(id)
     setEditItem(false)
   };
 
 
   const addTodo = () => {
     if (!item) {
-      alert("Please, enter your todo!!");
+      alert("Please, next time enter your todo!!");
       return;
     }
 
@@ -49,10 +49,6 @@ function App() {
     setEditItem(true)
   }
 
-  function doneTodo(id){
-    const edittedItem = newItems.find((item) => item.id === id);
-    setIsDone(true)
-  }
 
   function clearAllTodos() {
     setNewItems([])
@@ -81,7 +77,7 @@ function App() {
           <ul className="list">
             {newItems.map((item) => {
                 return (
-                  <li className={isDone ? 'completed-item' : 'not-completed-item'} key={item.id}>
+                  <li className='item' key={item.id}>
                     {item.value}
                     <button
                       className="btn-edit"
@@ -89,7 +85,7 @@ function App() {
                         editTodo(item.id);
                       }}
                     >
-                      <img className="edit-img" src="edit.png"/>
+                      <img className="edit-img" src="edit.png" alt="edit"/>
                     </button>
 
                     <button
@@ -98,7 +94,7 @@ function App() {
                         deleteTodo(item.id);
                       }}
                     >
-                      <img className="delete-img" src="cross.png"/>
+                      <img className="delete-img" src="cross.png" alt="delete"/>
                     </button>
                   </li>
                 );
