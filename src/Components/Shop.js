@@ -118,8 +118,6 @@ function Shop() {
           )}
         </ul>
       </div>
-      {/* 
-      <div>Your cart consists of: {noteAmount} notes and {penAmount} pens</div>  */}
     </div>
   );
 }
