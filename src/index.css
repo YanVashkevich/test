@@ -1,6 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Braah+One&display=swap');
+
 
 body {
   margin: 0;
   padding: 0;
   background: #F5F5F5;
+  font-family: 'Braah One', sans-serif;
 }

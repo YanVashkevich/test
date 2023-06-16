@@ -1,110 +1,37 @@
-import React, { useState } from "react";
-import "./App.css";
+import React from 'react'
+import Navbar from './Components/Navbar'
+import Home from './Components/Home'
+import Shop from './Components/Shop'
+import Contact from './Components/Contact'
+import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 
 function App() {
-
-  const [item, setItem] = useState("");
-  const [newItems, setNewItems] = useState([]);
-  const [id, setId] = useState(0);
-  const [editItem, setEditItem] = useState(false)
-
-
-
-  function handleSubmit(e){
-    e.preventDefault();
-    console.log('success');
-    console.log(id)
-    setEditItem(false)
-  };
-
-
-  const addTodo = () => {
-    if (!item) {
-      alert("Please, next time enter your todo!!");
-      return;
-    }
-
-    const newitem = {
-      id: Math.floor(Math.random() * 1000),
-      value: item,
-    };
-
-    setNewItems((oldList) => [...oldList, newitem]);
-    setItem("");
-  };
-
-  function deleteTodo(id) {
-    const newArray = newItems.filter((item) => item.id !== id);
-    setNewItems(newArray);
-  }
-
-  
-  function editTodo(id) {
-    const newArray = newItems.filter((item) => item.id !== id);
-    const edittedItem = newItems.find((item) => item.id === id);
-    setNewItems(newArray)
-    setItem(edittedItem.value)
-    setId(id)
-    setEditItem(true)
-  }
-
-
-  function clearAllTodos() {
-    setNewItems([])
-  }
-
-
   return (
-    <div className="App">
-      <form className="form" onSubmit={handleSubmit}>
-        <h1 className="title">ToDo's List</h1>
+      <Router>
+        <div className='app-route'>
+          <div className='header'>
+            <Navbar/>
+          </div>
 
-        {/* Все кроме title */}
-        <div className="input-btn-output">
-          <input
-            type="text"
-            className="input"
-            placeholder="Enter your todo please..."
-            value={item}
-            onChange={(e) => setItem(e.target.value)}
-          />
-        
-          <button className = {editItem ? 'add-edit-btn' : 'btn'} onClick={addTodo}>
-            {editItem ? 'Edit Item' : 'Add Item'}
-          </button>
+          <div className='content-route'>
+            <Switch>
+              <Route exact path='/'>
+                <Home/>
+              </Route>
 
-          <ul className="list">
-            {newItems.map((item) => {
-                return (
-                  <li className='item' key={item.id}>
-                    {item.value}
-                    <button
-                      className="btn-edit"
-                      onClick={() => {
-                        editTodo(item.id);
-                      }}
-                    >
-                      <img className="edit-img" src="edit.png" alt="edit"/>
-                    </button>
-
-                    <button
-                      className="btn-delete"
-                      onClick={() => {
-                        deleteTodo(item.id);
-                      }}
-                    >
-                      <img className="delete-img" src="cross.png" alt="delete"/>
-                    </button>
-                  </li>
-                );
-            })}
-          </ul>
+              <Route exact path = '/shop'>
+                <Shop/>
+              </Route>
+              
+              <Route exact path='/contact'>
+                <Contact/>
+              </Route>
+            </Switch>
+          </div>
         </div>
-      </form>
-      <button onClick={clearAllTodos} className="clear-all">Clear All Todos</button>
-    </div>
-  );
+      </Router>
+  )
 }
 
-export default App;
+export default App

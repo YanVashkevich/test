@@ -1,5 +1,4 @@
 /* Whole page */
-@import url('https://fonts.googleapis.com/css2?family=Braah+One&display=swap');
 
 .App {
   padding: 12px;
@@ -112,7 +111,7 @@
 
 
 .clear-all {
-  background-color: rgb(192, 18, 18);
+  background-color: rgb(226, 55, 55);
   color: rgb(231, 165, 165);
   border-radius: 12px;
   box-sizing: border-box;
