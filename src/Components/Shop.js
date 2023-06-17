@@ -57,7 +57,7 @@ function Shop() {
         <div className="shop-el">
           <div className="whole-amount">{amount}</div>
           <button onClick={toggleModal} className="btn-modal">
-            <img src="https://static.vecteezy.com/system/resources/thumbnails/009/157/893/small/shopping-cart-set-of-shopping-cart-icon-on-white-background-shopping-cart-icon-shopping-cart-design-shopping-cart-icon-sign-shopping-cart-icon-isolated-shopping-cart-symbol-free-vector.jpg" />
+            <img alt="cart" src="https://static.vecteezy.com/system/resources/thumbnails/009/157/893/small/shopping-cart-set-of-shopping-cart-icon-on-white-background-shopping-cart-icon-shopping-cart-design-shopping-cart-icon-sign-shopping-cart-icon-isolated-shopping-cart-symbol-free-vector.jpg" />
           </button>
 
           {modal && (
@@ -66,15 +66,15 @@ function Shop() {
               <div className="modal-content">
                 <h2>Your Cart Items</h2>
                 <div className="cart-note">
-                  <img src='https://cdn.shopify.com/s/files/1/0831/9463/products/Gallery-Notebook-Mineral-Green.png?v=1684344954'/>
+                  <img alt="note" src='https://cdn.shopify.com/s/files/1/0831/9463/products/Gallery-Notebook-Mineral-Green.png?v=1684344954'/>
                   Notebook:{noteAmount} 
                 </div>
                 <div className="cart-pen">
-                  <img src='https://img.freepik.com/free-vector/vector-fountain-writing-pen-contract-signing_1284-41915.jpg?w=2000'/>
+                  <img alt="pen" src='https://img.freepik.com/free-vector/vector-fountain-writing-pen-contract-signing_1284-41915.jpg?w=2000'/>
                   Pen:{penAmount}
                 </div>
                 <button className="close-modal" onClick={toggleModal}>
-                  <img src="cross.png"/>
+                  <img src="cross.png" alt="cross"/>
                 </button>
                 <button onClick={buyItems} className="buy-all">Buy</button>
               </div>
@@ -97,6 +97,7 @@ function Shop() {
                 <li key={product.id}>
                   <form onSubmit={submitForm}>
                     <img
+                      alt="prod"
                       src={
                         product.id == 1
                           ? "https://cdn.shopify.com/s/files/1/0831/9463/products/Gallery-Notebook-Mineral-Green.png?v=1684344954"
