@@ -1,26 +1,19 @@
-import React, { useEffect, useState } from "react";
-import "./CSSs/Shop.css";
-import axios from "axios";
+import React, { useState,useEffect } from "react";
+import "./Shop.css";
+import { useGetItems } from "../../Context/useGetItems";
 
 function Shop() {
-  const [products, setProducts] = useState([]);
   const [amount, setAmount] = useState(0);
-  const [isLoading, setIsLoading] = useState(true);
   const [noteAmount, setNoteAmount] = useState(0);
   const [penAmount, setPenAmount] = useState(0);
   const [modal, setModal] = useState(false);
 
+  const {isLoading, products, callAPI} = useGetItems();
+
   useEffect(() => {
-    axios
-      .get("https://6489b61b5fa58521cab01a3f.mockapi.io/products")
-      .then((response) => {
-        setProducts(response.data);
-        setIsLoading(false);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    callAPI()
   }, []);
+
 
   const addToCart = (id) => {
     setAmount(amount + 1);

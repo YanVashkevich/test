@@ -1,8 +1,8 @@
 import React from 'react'
-import Navbar from './Components/Navbar'
-import Home from './Components/Home'
-import Shop from './Components/Shop'
-import Contact from './Components/Contact'
+import Navbar from './Components/Navbar/Navbar'
+import Home from './Components/HomePage/Home'
+import Shop from './Components/Shop/Shop'
+import Contact from './Components/ContactUs/Contact'
 import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 
